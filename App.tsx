@@ -1,20 +1,119 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+
+import React from 'react';
+import { View, StyleSheet, Dimensions, FlatList } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { TabView, SceneMap } from 'react-native-tab-view';
+import FastFoodCard from './components/FastFoodCard';
+import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
+import Favourites from './components/Favourites';
+import Deals from './components/Deals';
+import Snacks from './components/Snacks';
+import { fastFoodItems } from './data';
+import { FastFoodItem } from './type';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+export type RootStackParamList = {
+  Home: undefined;
+  ProductDetail: { item: FastFoodItem };
+  Cart: undefined;
+  Favourites: undefined;
+  Deals: undefined;
+  Snacks: undefined;
+};
 
 export default function App() {
+  const [cartItems, setCartItems] = React.useState<FastFoodItem[]>([]);
+  const [favouriteItems, setFavouriteItems] = React.useState<FastFoodItem[]>([]);
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'home', title: 'Home' },
+    { key: 'snacks', title: 'Snacks' },
+    { key: 'deals', title: 'Deals' },
+    { key: 'favourites', title: 'Favourites' },
+  ]);
+
+  const handleAddToCart = (item: FastFoodItem) => {
+    setCartItems((prevItems) => {
+      const itemExists = prevItems.find((cartItem) => cartItem.id === item.id);
+      if (itemExists) {
+        return prevItems.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: (cartItem.quantity || 0) + 1 }
+            : cartItem
+        );
+      } else {
+        return [...prevItems, { ...item, quantity: 1 }];
+      }
+    });
+  };
+
+  const handleToggleFavourite = (item: FastFoodItem) => {
+    setFavouriteItems((prevItems) => {
+      const itemExists = prevItems.find((favItem) => favItem.id === item.id);
+      if (itemExists) {
+        return prevItems.filter((favItem) => favItem.id !== item.id); // Remove from favourites
+      } else {
+        return [...prevItems, item]; // Add to favourites
+      }
+    });
+  };
+
+  const HomeScreen = () => (
+    <SafeAreaView style={styles.safeAreaContainer}>
+      <FlatList
+        data={fastFoodItems}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <FastFoodCard
+            item={item}
+            onPress={() => {}}
+            onToggleFavourite={() => handleToggleFavourite(item)}
+            isFavourite={favouriteItems.some((favItem) => favItem.id === item.id)}
+          />
+        )}
+        numColumns={2}
+        contentContainerStyle={styles.listContainer}
+      />
+    </SafeAreaView>
+  );
+
+  const SnacksScreen = () => <Snacks />;
+  const DealsScreen = () => <Deals />;
+  const FavouritesScreen = () => <Favourites favouriteItems={favouriteItems} />;
+
+  const renderScene = SceneMap({
+    home: HomeScreen,
+    snacks: SnacksScreen,
+    deals: DealsScreen,
+    favourites: FavouritesScreen,
+  });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.safeAreaContainer}>
+      <NavigationContainer>
+        <TabView
+          navigationState={{ index, routes }}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={{ width: Dimensions.get('window').width }}
+          style={styles.tabView}
+        />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeAreaContainer: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  listContainer: {
+    padding: 16,
+  },
+  tabView: {
+    flex: 1,
   },
 });
