@@ -19,7 +19,10 @@ const Favourites: React.FC<FavouritesProps> = ({ favouriteItems }) => {
 
   const renderFavouriteItem = ({ item }: { item: FastFoodItem }) => (
     <View style={styles.card}>
-      <Image source={item.image} style={styles.image} />
+      <Image 
+      source={{ uri: item.image }} 
+      style={styles.image} 
+      />
       <View style={styles.textContainer}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.price}>${item.price}</Text>
