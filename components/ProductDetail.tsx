@@ -1,4 +1,7 @@
 
+
+
+
 // import React, { useState, useEffect } from 'react';
 // import {
 //   ScrollView,
@@ -7,8 +10,8 @@
 //   Image,
 //   StyleSheet,
 //   TouchableOpacity,
-//   Alert,
 //   FlatList,
+//   Modal,
 // } from 'react-native';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { RouteProp, useNavigation } from '@react-navigation/native';
@@ -19,15 +22,22 @@
 // };
 
 // const ProductDetail: React.FC<ProductDetailProps> = ({ route }) => {
-//   const { item } = route.params; // Extract the product details from route params
+//   const { item } = route.params;
 //   const navigation = useNavigation();
 //   const [cartItems, setCartItems] = useState<any[]>([]);
+//   const [cartVisible, setCartVisible] = useState(false);
+//   const [currentItemQuantity, setCurrentItemQuantity] = useState(0);
+//   const [notification, setNotification] = useState<string | null>(null);
+//   const [notificationTimeout, setNotificationTimeout] = useState<NodeJS.Timeout | null>(null);
 
-//   // Function to fetch cart items from AsyncStorage
 //   const fetchCartItems = async () => {
 //     try {
 //       const cart = (await AsyncStorage.getItem('cart')) || '[]';
-//       setCartItems(JSON.parse(cart));
+//       const parsedCart = JSON.parse(cart);
+//       setCartItems(parsedCart);
+
+//       const currentCartItem = parsedCart.find((cartItem: any) => cartItem.id === item.id);
+//       setCurrentItemQuantity(currentCartItem?.quantity || 0);
 //     } catch (error) {
 //       console.error('Error fetching cart items:', error);
 //     }
@@ -35,25 +45,43 @@
 
 //   useEffect(() => {
 //     fetchCartItems();
-//   }, []);
+//     return () => {
+//       setCartVisible(false);
+//       if (notificationTimeout) clearTimeout(notificationTimeout);
+//     };
+//   }, [item]);
+
+//   const showNotification = (message: string) => {
+//     if (notificationTimeout) {
+//       clearTimeout(notificationTimeout);
+//     }
+
+//     setNotification(message);
+//     const timeout = setTimeout(() => setNotification(null), 3000);
+//     setNotificationTimeout(timeout);
+//   };
 
 //   const addToCart = async () => {
 //     try {
 //       const cart = (await AsyncStorage.getItem('cart')) || '[]';
 //       const cartItems = JSON.parse(cart);
-
 //       const existingItem = cartItems.find((cartItem: any) => cartItem.id === item.id);
+
 //       if (existingItem) {
 //         existingItem.quantity += 1;
+//         showNotification(`${existingItem.quantity} ${item.name} are now in your cart. 😉`);
+//         setCurrentItemQuantity(existingItem.quantity);
 //       } else {
 //         cartItems.push({ ...item, quantity: 1 });
+//         showNotification(`${item.name} added to cart! 😉`);
+//         setCurrentItemQuantity(1);
 //       }
 
 //       await AsyncStorage.setItem('cart', JSON.stringify(cartItems));
-//       Alert.alert('Success', `${item.name} added to cart!`);
-//       fetchCartItems();
+//       setCartItems(cartItems);
+//       setCartVisible(true);
 //     } catch (error) {
-//       Alert.alert('Error', 'Failed to add item to cart.');
+//       showNotification('Failed to add item to cart.');
 //       console.error(error);
 //     }
 //   };
@@ -64,22 +92,46 @@
 //         .map((cartItem) => {
 //           if (cartItem.id === id) {
 //             const newQuantity = cartItem.quantity + delta;
-//             return newQuantity > 0 ? { ...cartItem, quantity: newQuantity } : null;
+
+//             if (newQuantity > 0) {
+//               if (cartItem.id === item.id) {
+//                 showNotification(`${newQuantity} ${cartItem.name} are now in your cart. 😉`);
+//                 setCurrentItemQuantity(newQuantity);
+//               }
+//               return { ...cartItem, quantity: newQuantity };
+//             } else {
+//               if (cartItem.id === item.id) {
+//                 setCurrentItemQuantity(0);
+//                 setNotification(null);
+//               }
+//               return null;
+//             }
 //           }
 //           return cartItem;
 //         })
-//         .filter(Boolean); // Remove items with null values (quantity <= 0)
+//         .filter(Boolean);
 
 //       setCartItems(updatedCart);
 //       await AsyncStorage.setItem('cart', JSON.stringify(updatedCart));
+//       setCartVisible(updatedCart.length > 0);
 //     } catch (error) {
 //       console.error('Error updating cart item quantity:', error);
 //     }
 //   };
 
+//   const calculateTotal = () => {
+//     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+//   };
+
 //   const renderCartItem = ({ item }: { item: any }) => (
 //     <View style={styles.cartItem}>
-//       <Text style={styles.cartItemText}>{item.name}</Text>
+//       <Text
+//         style={styles.cartItemText}
+//         numberOfLines={1}
+//         ellipsizeMode="tail"
+//       >
+//         {item.name}
+//       </Text>
 //       <View style={styles.quantityContainer}>
 //         <TouchableOpacity
 //           style={styles.quantityButton}
@@ -100,38 +152,132 @@
 //       </Text>
 //     </View>
 //   );
+  
 
 //   return (
 //     <ScrollView contentContainerStyle={styles.container}>
-//       <Image source={item.image} style={styles.image} resizeMode="contain" />
+//       <Image source={{ uri: item.image }} style={styles.image} resizeMode="contain" />
 //       <Text style={styles.name}>{item.name}</Text>
 //       <Text style={styles.price}>${parseFloat(item.price).toFixed(2)}</Text>
-//       <Text style={styles.description}>
-//         Delicious {item.name} prepared just for you. Add to your cart to enjoy this amazing treat!
-//       </Text>
+
 //       <TouchableOpacity style={styles.addButton} onPress={addToCart}>
 //         <Text style={styles.addButtonText}>Add to Cart</Text>
 //       </TouchableOpacity>
+
+//       <Text style={styles.description}>
+//         Delicious {item.name} prepared just for you. Add to your cart to enjoy this amazing treat!
+//       </Text>
+
+//       <View style={styles.tableContainer}>
+//         <Text style={styles.tableHeader}>Nutritional Information</Text>
+//         {Object.entries(item.nutritionalInfo).map(([key, value]) => (
+//           <View style={styles.tableRow} key={key}>
+//             <Text style={styles.tableCell}>{key.charAt(0).toUpperCase() + key.slice(1)}</Text>
+//             <Text style={styles.tableCell}>
+//               {value} {key === 'calories' ? 'kcal' : 'g'}
+//             </Text>
+//           </View>
+//         ))}
+//       </View>
+// {/* 
 //       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
 //         <Text style={styles.backButtonText}>Back to Home</Text>
-//       </TouchableOpacity>
-//       <View style={styles.cartContainer}>
-//         <Text style={styles.cartHeader}>Your Cart:</Text>
-//         {cartItems.length > 0 ? (
-//           <FlatList
-//             data={cartItems}
-//             keyExtractor={(item) => item.id.toString()}
-//             renderItem={renderCartItem}
-//           />
-//         ) : (
-//           <Text style={styles.emptyCartText}>Your cart is empty.</Text>
-//         )}
-//       </View>
+//       </TouchableOpacity> */}
+
+//       {notification && (
+//         <View style={styles.notification}>
+//           <Text style={styles.notificationText}>{notification}</Text>
+//         </View>
+//       )}
+// {/* following is the modal */}
+//       <Modal
+//         visible={cartVisible}
+//         transparent
+//         animationType="slide"
+//         onRequestClose={() => setCartVisible(false)}
+//       >
+//         <View style={styles.modalContainer}>
+//           <View style={styles.modalContent}>
+//             <Text style={styles.cartHeader}>Your Cart:</Text>
+//             {cartItems.length > 0 ? (
+//               <FlatList
+//                 data={cartItems}
+//                 keyExtractor={(item) => item.id.toString()}
+//                 renderItem={renderCartItem}
+//               />
+//             ) : (
+//               <Text style={styles.emptyCartText}>Your cart is empty.</Text>
+//             )}
+//             {cartItems.length > 0 && (
+//               <View style={styles.totalContainer}>
+//                 <Text style={styles.totalText}>Total: ${calculateTotal().toFixed(2)}</Text>
+//               </View>
+//             )}
+//             <TouchableOpacity
+//               style={styles.closeButton}
+//               onPress={() => setCartVisible(false)}
+//             >
+//               <Text style={styles.closeButtonText}>Close</Text>
+//             </TouchableOpacity>
+//           </View>
+//         </View>
+//       </Modal>
 //     </ScrollView>
 //   );
 // };
 
 // const styles = StyleSheet.create({
+  
+//   tableContainer: {
+//     marginTop: 20,
+//     width: '100%',
+//     paddingHorizontal: 20,
+//     paddingVertical: 15,
+//     backgroundColor: '#ffffff',
+//     borderRadius: 12,
+//     elevation: 5,
+//     shadowColor: '#000',
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//   },
+//   tableHeader: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//     marginBottom: 15,
+//     textAlign: 'center',
+//     color: '#444',
+//     borderBottomWidth: 1,
+//     borderBottomColor: '#ddd',
+//     paddingBottom: 5,
+//   },
+//   tableRow: {
+//     flexDirection: 'row',
+//     justifyContent: 'space-between',
+//     paddingVertical: 8,
+//     borderBottomWidth: 1,
+//     borderBottomColor: '#eee',
+//   },
+//   tableCell: {
+//     fontSize: 16,
+//     color: '#555',
+//   },
+  
+//     notification: {
+//     position: 'absolute',
+//     top: 10,
+//     left: 20,
+//     right: 20,
+//     backgroundColor: '#333',
+//     padding: 10,
+//     borderRadius: 8,
+//     zIndex: 9999,
+//   },
+//   notificationText: {
+//     color: '#fff',
+//     fontWeight: 'bold',
+//     textAlign: 'center',
+//   },
 //   container: {
 //     alignItems: 'center',
 //     paddingBottom: 30,
@@ -160,10 +306,10 @@
 //   addButton: {
 //     backgroundColor: '#ff6347',
 //     padding: 15,
-//     borderRadius: 10,
+//     borderRadius: 30,
 //     marginTop: 20,
 //     alignItems: 'center',
-//     width: '100%',
+//     width: '60%',
 //   },
 //   addButtonText: {
 //     fontSize: 18,
@@ -182,13 +328,21 @@
 //     fontSize: 16,
 //     color: '#333',
 //   },
-//   cartContainer: {
-//     marginTop: 30,
-//     width: '100%',
-//     padding: 15,
+//   modalContainer: {
+//     flex: 1,
+//     justifyContent: 'flex-end',
+//     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+//   },
+//   modalContent: {
 //     backgroundColor: '#fff',
-//     borderRadius: 10,
-//     elevation: 3,
+//     borderTopLeftRadius: 15,
+//     borderTopRightRadius: 15,
+//     padding: 20,
+//     shadowColor: '#000',
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 3.84,
+//     elevation: 5,
 //   },
 //   cartHeader: {
 //     fontSize: 20,
@@ -211,7 +365,11 @@
 //   },
 //   cartItemText: {
 //     fontSize: 16,
+//     fontWeight:'bold',
+//     maxWidth: 150, // Adjust the width to your preference
+//     overflow: 'hidden',
 //   },
+  
 //   cartItemPrice: {
 //     fontSize: 16,
 //     fontWeight: 'bold',
@@ -243,9 +401,38 @@
 //     fontSize: 16,
 //     fontWeight: 'bold',
 //   },
+//   closeButton: {
+//     backgroundColor: '#ff6347',
+//     padding: 10,
+//     borderRadius: 10,
+//     marginTop: 10,
+//     alignItems: 'center',
+//   },
+//   closeButtonText: {
+//     color: '#fff',
+//     fontWeight: 'bold',
+//     fontSize: 16,
+//   },
+//   totalContainer: {
+//     marginTop: 10,
+//     alignItems: 'center',
+//   },
+//   totalText: {
+//     fontSize: 18,
+//     fontWeight: 'bold',
+//   },
+
 // });
 
 // export default ProductDetail;
+
+
+
+
+
+
+
+
 
 
 
@@ -270,24 +457,22 @@ type ProductDetailProps = {
 };
 
 const ProductDetail: React.FC<ProductDetailProps> = ({ route }) => {
-  const { item } = route.params; // Extract the product details from route params
+  const { item } = route.params;
   const navigation = useNavigation();
   const [cartItems, setCartItems] = useState<any[]>([]);
-  const [cartVisible, setCartVisible] = useState(false); // Manage cart visibility
-  const [currentItemQuantity, setCurrentItemQuantity] = useState(0); // Track current item's quantity in cart
-  const [notification, setNotification] = useState<string | null>(null); // Notification message
-  const [notificationTimeout, setNotificationTimeout] = useState<NodeJS.Timeout | null>(null); // Track timer
+  const [cartVisible, setCartVisible] = useState(false);
+  const [currentItemQuantity, setCurrentItemQuantity] = useState(0);
+  const [notification, setNotification] = useState<string | null>(null);
+  const [notificationTimeout, setNotificationTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  // Function to fetch cart items from AsyncStorage
   const fetchCartItems = async () => {
     try {
       const cart = (await AsyncStorage.getItem('cart')) || '[]';
       const parsedCart = JSON.parse(cart);
       setCartItems(parsedCart);
 
-      // Find the current item's quantity in the cart
       const currentCartItem = parsedCart.find((cartItem: any) => cartItem.id === item.id);
-      setCurrentItemQuantity(currentCartItem?.quantity || 0); // Default to 0 if item not in cart
+      setCurrentItemQuantity(currentCartItem?.quantity || 0);
     } catch (error) {
       console.error('Error fetching cart items:', error);
     }
@@ -295,23 +480,20 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ route }) => {
 
   useEffect(() => {
     fetchCartItems();
-
-    // Cleanup function to reset modal visibility when navigating away
     return () => {
       setCartVisible(false);
       if (notificationTimeout) clearTimeout(notificationTimeout);
     };
-  }, [item]); // Trigger on item change (when navigating to another product)
+  }, [item]);
 
   const showNotification = (message: string) => {
-    // Clear the previous timer if it exists
     if (notificationTimeout) {
       clearTimeout(notificationTimeout);
     }
 
     setNotification(message);
-    const timeout = setTimeout(() => setNotification(null), 3000); // Clear the message after 2 seconds
-    setNotificationTimeout(timeout); // Store the current timer
+    const timeout = setTimeout(() => setNotification(null), 3000);
+    setNotificationTimeout(timeout);
   };
 
   const addToCart = async () => {
@@ -322,17 +504,17 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ route }) => {
 
       if (existingItem) {
         existingItem.quantity += 1;
-        showNotification(`${existingItem.quantity} ${item.name} are now  in your cart.😉`);
-        setCurrentItemQuantity(existingItem.quantity); // Update local quantity
+        showNotification(`${existingItem.quantity} ${item.name} are now in your cart. 😉`);
+        setCurrentItemQuantity(existingItem.quantity);
       } else {
         cartItems.push({ ...item, quantity: 1 });
         showNotification(`${item.name} added to cart! 😉`);
-        setCurrentItemQuantity(1); // Set quantity to 1 for a new item
+        setCurrentItemQuantity(1);
       }
 
       await AsyncStorage.setItem('cart', JSON.stringify(cartItems));
-      setCartItems(cartItems); // Update local cart items
-      setCartVisible(true); // Show the cart modal
+      setCartItems(cartItems);
+      setCartVisible(true);
     } catch (error) {
       showNotification('Failed to add item to cart.');
       console.error(error);
@@ -348,25 +530,25 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ route }) => {
 
             if (newQuantity > 0) {
               if (cartItem.id === item.id) {
-                showNotification(`${newQuantity} ${cartItem.name} are now  in your cart. 😉`);
+                showNotification(`${newQuantity} ${cartItem.name} are now in your cart. 😉`);
                 setCurrentItemQuantity(newQuantity);
               }
               return { ...cartItem, quantity: newQuantity };
             } else {
               if (cartItem.id === item.id) {
-                setCurrentItemQuantity(0); // Reset the quantity to 0
-                setNotification(null); // Immediately stop showing the notification
+                setCurrentItemQuantity(0);
+                setNotification(null);
               }
-              return null; // Remove item from cart if quantity is 0
+              return null;
             }
           }
           return cartItem;
         })
-        .filter(Boolean); // Remove items with null values (quantity <= 0)
+        .filter(Boolean);
 
       setCartItems(updatedCart);
       await AsyncStorage.setItem('cart', JSON.stringify(updatedCart));
-      setCartVisible(updatedCart.length > 0); // Update cart visibility
+      setCartVisible(updatedCart.length > 0);
     } catch (error) {
       console.error('Error updating cart item quantity:', error);
     }
@@ -378,7 +560,13 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ route }) => {
 
   const renderCartItem = ({ item }: { item: any }) => (
     <View style={styles.cartItem}>
-      <Text style={styles.cartItemText}>{item.name}</Text>
+      <Text
+        style={styles.cartItemText}
+        numberOfLines={1}
+        ellipsizeMode="tail"
+      >
+        {item.name}
+      </Text>
       <View style={styles.quantityContainer}>
         <TouchableOpacity
           style={styles.quantityButton}
@@ -399,74 +587,159 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ route }) => {
       </Text>
     </View>
   );
+  
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image 
-      source={{ uri: item.image }} 
-      style={styles.image} 
-      resizeMode="contain" 
-    />
+      <Image source={{ uri: item.image }} style={styles.image} resizeMode="contain" />
       <Text style={styles.name}>{item.name}</Text>
+      {item.originalPrice && (
+              <Text style={styles.originalPrice}>${item.originalPrice}</Text>
+            )}
       <Text style={styles.price}>${parseFloat(item.price).toFixed(2)}</Text>
-      <Text style={styles.description}>
-        Delicious {item.name} prepared just for you. Add to your cart to enjoy this amazing treat!
-      </Text>
+
       <TouchableOpacity style={styles.addButton} onPress={addToCart}>
         <Text style={styles.addButtonText}>Add to Cart</Text>
       </TouchableOpacity>
+
+      <Text style={styles.description}>
+        Delicious {item.name} prepared just for you. Add to your cart to enjoy this amazing treat!
+      </Text>
+
+      <View style={styles.tableContainer}>
+        <Text style={styles.tableHeader}>Nutritional Information</Text>
+        {Object.entries(item.nutritionalInfo).map(([key, value]) => (
+          <View style={styles.tableRow} key={key}>
+            <Text style={styles.tableCell}>{key.charAt(0).toUpperCase() + key.slice(1)}</Text>
+            <Text style={styles.tableCell}>
+              {value} {key === 'calories' ? 'kcal' : 'g'}
+            </Text>
+          </View>
+        ))}
+      </View>
+{/* 
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <Text style={styles.backButtonText}>Back to Home</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      {/* Notification Banner */}
       {notification && (
         <View style={styles.notification}>
           <Text style={styles.notificationText}>{notification}</Text>
         </View>
       )}
-
-      {/* Cart Modal */}
-      <Modal
-        visible={cartVisible}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setCartVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.cartHeader}>Your Cart:</Text>
-            {cartItems.length > 0 ? (
-              <FlatList
-                data={cartItems}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={renderCartItem}
-              />
-            ) : (
-              <Text style={styles.emptyCartText}>Your cart is empty.</Text>
-            )}
-            {/* Display Total */}
-            {cartItems.length > 0 && (
-              <View style={styles.totalContainer}>
-                <Text style={styles.totalText}>Total: ${calculateTotal().toFixed(2)}</Text>
-              </View>
-            )}
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={() => setCartVisible(false)}
-            >
-              <Text style={styles.closeButtonText}>Close</Text>
-            </TouchableOpacity>
-          </View>
+{/* following is the modal */}
+<Modal
+  visible={cartVisible}
+  transparent
+  animationType="slide"
+  onRequestClose={() => setCartVisible(false)}
+>
+  <View style={styles.modalContainer}>
+    <View style={styles.modalContent}>
+      <Text style={styles.cartHeader}>Your Cart:</Text>
+      {cartItems.length > 0 ? (
+        <FlatList
+          data={cartItems}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderCartItem}
+        />
+      ) : (
+        <Text style={styles.emptyCartText}>Your cart is empty.</Text>
+      )}
+      {cartItems.length > 0 && (
+        <View style={styles.totalContainer}>
+          <Text style={styles.totalText}>Total: ${calculateTotal().toFixed(2)}</Text>
         </View>
-      </Modal>
+      )}
+      {/* Buttons */}
+      <View style={styles.buttonRow}>
+        <TouchableOpacity
+          style={[styles.modalButton, styles.closeButton]}
+          onPress={() => setCartVisible(false)}
+        >
+          <Text style={styles.closeButtonText}>Close</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.modalButton, styles.cartButton]}
+          onPress={() => {
+            setCartVisible(false);
+            navigation.navigate('Cart'); // Ensure the "Cart" screen is part of your navigation setup
+          }}
+        >
+          <Text style={styles.cartButtonText}>View Cart</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  </View>
+</Modal>
+
     </ScrollView>
   );
 };
 
-
 const styles = StyleSheet.create({
-  notification: {
+  
+  tableContainer: {
+    marginTop: 20,
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    backgroundColor: '#ffffff',
+    borderRadius: 12,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  modalButton: {
+    flex: 1,
+    padding: 10,
+    borderRadius: 10,
+    marginHorizontal: 5,
+    alignItems: 'center',
+  },
+  cartButton: {
+    backgroundColor: '#4CAF50', // Green color for the "Go to Cart" button
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 10,
+    alignItems: 'center'
+  
+  },
+  cartButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  tableHeader: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    textAlign: 'center',
+    color: '#444',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    paddingBottom: 5,
+  },
+  tableRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  tableCell: {
+    fontSize: 16,
+    color: '#555',
+  },
+  
+    notification: {
     position: 'absolute',
     top: 10,
     left: 20,
@@ -484,6 +757,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     paddingBottom: 30,
+  },
+  originalPrice: {
+    fontSize: 20,
+    color: '#FA8072',
+    textDecorationLine: 'line-through',
+    marginRight: 5,
   },
   image: {
     width: '100%',
@@ -509,10 +788,10 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: '#ff6347',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 30,
     marginTop: 20,
     alignItems: 'center',
-    width: '100%',
+    width: '60%',
   },
   addButtonText: {
     fontSize: 18,
@@ -568,7 +847,11 @@ const styles = StyleSheet.create({
   },
   cartItemText: {
     fontSize: 16,
+    fontWeight:'bold',
+    maxWidth: 150, // Adjust the width to your preference
+    overflow: 'hidden',
   },
+  
   cartItemPrice: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -620,6 +903,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+
 });
 
 export default ProductDetail;

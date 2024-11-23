@@ -284,7 +284,6 @@
 
 
 
-
 import React, { useEffect, useState } from 'react';
 import {
   View,
@@ -296,10 +295,12 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';  // Import RootStackParamList
 
 const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<any[]>([]);
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -345,11 +346,10 @@ const Cart: React.FC = () => {
 
   const renderCartItem = ({ item }: { item: any }) => (
     <View style={styles.cartItem}>
-      
-    <Image 
-      source={{ uri: item.image }} 
-      style={styles.cartItemImage}   
-    />
+      <Image 
+        source={{ uri: item.image }} 
+        style={styles.cartItemImage}   
+      />
       <View style={styles.cartItemDetails}>
         <View style={styles.cartRow}>
           <Text style={styles.cartItemText} numberOfLines={1}>
@@ -392,7 +392,7 @@ const Cart: React.FC = () => {
       ) : (
         <Text style={styles.emptyCartText}>Your cart is empty.</Text>
       )}
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.backButtonText}>Back to Home</Text>
       </TouchableOpacity>
     </View>
@@ -432,13 +432,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     flex: 1,
-    flexShrink: 1, // Ensures name adjusts size dynamically
+    flexShrink: 1,
   },
   cartItemPrice: {
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'right', // Aligns price to the right
-    width: 80, // Fixed width to prevent layout jumps
+    textAlign: 'right',
+    width: 80,
   },
   quantityContainer: {
     flexDirection: 'row',

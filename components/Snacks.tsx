@@ -1,26 +1,3 @@
-// // Snacks.tsx
-
-// import React from 'react';
-// import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
-
-// const Snacks: React.FC = () => {
- 
-
-  
-
-//   return (
-//     <View>
-//         <Text>this screen hasnt made yet, but it is shown</Text>
-//     </View>
-   
-//   );
-// };
-
-// export default Snacks;
-
-
-
-
 
 import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
@@ -31,9 +8,15 @@ type SnacksProps = {
   fastFoodItems: FastFoodItem[];
   favouriteItems: FastFoodItem[];
   onToggleFavourite: (item: FastFoodItem) => void;
+  navigation: any; // Added navigation prop
 };
 
-const Snacks: React.FC<SnacksProps> = ({ fastFoodItems, favouriteItems, onToggleFavourite }) => {
+const Snacks: React.FC<SnacksProps> = ({
+  fastFoodItems,
+  favouriteItems,
+  onToggleFavourite,
+  navigation,
+}) => {
   return (
     <View style={styles.container}>
       <FlatList
@@ -42,7 +25,7 @@ const Snacks: React.FC<SnacksProps> = ({ fastFoodItems, favouriteItems, onToggle
         renderItem={({ item }) => (
           <FastFoodCard
             item={item}
-            onPress={() => console.log('Navigate to details')}
+            onPress={() => navigation.navigate('ProductDetail', { item })} // Navigate to ProductDetail
             onToggleFavourite={() => onToggleFavourite(item)}
             isFavourite={favouriteItems.some((favItem) => favItem.id === item.id)}
           />
@@ -61,9 +44,10 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     paddingLeft: 15, // Adjusted padding to the left
-    paddingRight: 15, // Adjusted padding to the right
+    paddingRight: 10, // Adjusted padding to the right
     justifyContent: 'space-between', // Adds space between columns
     paddingVertical: 10, // Adds vertical padding to the container
+    backgroundColor:'#fff'
   },
 });
 

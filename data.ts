@@ -1,3 +1,513 @@
+[
+  {
+      "id": "21",
+      "name": "Grilled Chicken Salad",
+      "price": "8.99",
+      "originalPrice": "10.99",
+      "discount": "18%",
+      "image": "https://img.freepik.com/premium-photo/salad-with-grilled-chicken-isolated-white-background_185193-40021.jpg",
+      "category": "Salad",
+      "description": "Fresh greens topped with grilled chicken, cherry tomatoes, cucumbers, and a light vinaigrette dressing.",
+      "nutritionalInfo": {
+          "calories": 320,
+          "fat": 10,
+          "carbs": 15,
+          "protein": 40,
+          "fiber": 5,
+          "sodium": 480
+      },
+      "reviews": [
+          {
+              "user": "Emma",
+              "rating": 5,
+              "comment": "Perfectly balanced and delicious!"
+          }
+      ]
+  },
+  {
+      "id": "22",
+      "name": "Veggie Power Bowl",
+      "price": "7.49",
+      "originalPrice": "9.99",
+      "discount": "25%",
+      "image": "https://www.shutterstock.com/image-photo/vegan-buddha-bowl-hearty-base-600nw-2476514331.jpg",
+      "category": "Vegetarian",
+      "description": "A nutrient-packed bowl with quinoa, roasted vegetables, avocado, and tahini sauce.",
+      "nutritionalInfo": {
+          "calories": 410,
+          "fat": 15,
+          "carbs": 50,
+          "protein": 12,
+          "fiber": 10,
+          "sodium": 300
+      },
+      "reviews": [
+          {
+              "user": "Sophia",
+              "rating": 4,
+              "comment": "Tasty and filling without being heavy."
+          }
+      ]
+  },
+  {
+      "id": "23",
+      "name": "Salmon and Avocado Wrap",
+      "price": "9.99",
+      "originalPrice": "12.49",
+      "discount": "20%",
+      "image": "https://www.shutterstock.com/image-photo/salmon-vegetables-salad-leaves-wrapped-260nw-2397815089.jpg",
+      "category": "Seafood",
+      "description": "A whole-grain tortilla filled with smoked salmon, avocado, arugula, and a tangy yogurt sauce.",
+      "nutritionalInfo": {
+          "calories": 360,
+          "fat": 18,
+          "carbs": 30,
+          "protein": 25,
+          "fiber": 6,
+          "sodium": 600
+      },
+      "reviews": [
+          {
+              "user": "Liam",
+              "rating": 5,
+              "comment": "Fresh and delicious with a hint of tang!"
+          }
+      ]
+  },
+  {
+      "id": "24",
+      "name": "Quinoa Salad with Feta",
+      "price": "7.99",
+      "originalPrice": "10.49",
+      "discount": "23%",
+      "image": "https://img.freepik.com/free-photo/autumn-salad-with-apples-walnuts-isolated-white-backgroundxa_123827-25449.jpg",
+      "category": "Vegetarian",
+      "description": "A Mediterranean-inspired salad with quinoa, feta cheese, olives, and a lemon herb dressing.",
+      "nutritionalInfo": {
+          "calories": 350,
+          "fat": 12,
+          "carbs": 40,
+          "protein": 15,
+          "fiber": 7,
+          "sodium": 520
+      },
+      "reviews": [
+          {
+              "user": "Zara",
+              "rating": 4,
+              "comment": "Healthy and refreshing, but a bit salty."
+          }
+      ]
+  },
+  {
+      "id": "25",
+      "name": "Turkey Avocado Sandwich",
+      "price": "8.49",
+      "originalPrice": "10.99",
+      "discount": "23%",
+      "image": "https://img.freepik.com/premium-photo/turkey-avocado-sandwich-white-plate-white-background_864588-11416.jpg",
+      "category": "Sandwich",
+      "description": "A hearty whole-grain sandwich with sliced turkey, avocado, lettuce, and mustard.",
+      "nutritionalInfo": {
+          "calories": 420,
+          "fat": 14,
+          "carbs": 40,
+          "protein": 30,
+          "fiber": 5,
+          "sodium": 670
+      },
+      "reviews": [
+          {
+              "user": "Ethan",
+              "rating": 5,
+              "comment": "Great combination of flavors and super satisfying."
+          }
+      ]
+  },
+  {
+      "id": "26",
+      "name": "Kale and Sweet Potato Bowl",
+      "price": "8.99",
+      "originalPrice": "11.49",
+      "discount": "22%",
+      "image": "https://thefitchen.com/wp-content/uploads/2019/07/Sweet-Potato-Burrito-Bowls-1.jpg",
+      "category": "Vegetarian",
+      "description": "Roasted sweet potatoes, kale, and black beans with a drizzle of tahini dressing.",
+      "nutritionalInfo": {
+          "calories": 380,
+          "fat": 10,
+          "carbs": 55,
+          "protein": 12,
+          "fiber": 8,
+          "sodium": 350
+      },
+      "reviews": [
+          {
+              "user": "Ava",
+              "rating": 5,
+              "comment": "Rich in flavor and packed with nutrients."
+          }
+      ]
+  },
+  {
+      "id": "27",
+      "name": "Chicken and Brown Rice Plate",
+      "price": "10.99",
+      "originalPrice": "14.99",
+      "discount": "27%",
+      "image": "https://thumbs.dreamstime.com/b/plate-rice-fried-chicken-white-background-top-view-302886535.jpg",
+      "category": "Healthy Meal",
+      "description": "Grilled chicken breast served with steamed brown rice and broccoli.",
+      "nutritionalInfo": {
+          "calories": 460,
+          "fat": 8,
+          "carbs": 45,
+          "protein": 50,
+          "fiber": 6,
+          "sodium": 500
+      },
+      "reviews": [
+          {
+              "user": "Oliver",
+              "rating": 5,
+              "comment": "Simple yet flavorful and very healthy."
+          }
+      ]
+  },
+  {
+      "id": "28",
+      "name": "Grilled Salmon with Veggies",
+      "price": "14.99",
+      "originalPrice": "18.99",
+      "discount": "21%",
+      "image": "https://img.freepik.com/premium-photo/tasty-grilled-salmon-isolated-white-background_185193-42140.jpg",
+      "category": "Seafood",
+      "description": "Grilled salmon fillet served with steamed asparagus and roasted carrots.",
+      "nutritionalInfo": {
+          "calories": 540,
+          "fat": 20,
+          "carbs": 25,
+          "protein": 45,
+          "fiber": 8,
+          "sodium": 550
+      },
+      "reviews": [
+          {
+              "user": "Charlotte",
+              "rating": 5,
+              "comment": "The salmon is perfectly cooked, and the veggies are delicious!"
+          }
+      ]
+  },
+  {
+      "id": "29",
+      "name": "Tofu Stir-Fry",
+      "price": "9.49",
+      "originalPrice": "12.49",
+      "discount": "24%",
+      "image": "https://img.freepik.com/premium-photo/fresh-colorful-tofu-stir-fry-white-background-healthy-vegan-meal-healthy-eating_763042-1989.jpg",
+      "category": "Vegetarian",
+      "description": "Tofu sautéed with bell peppers, broccoli, and snap peas in a ginger-soy sauce.",
+      "nutritionalInfo": {
+          "calories": 400,
+          "fat": 12,
+          "carbs": 50,
+          "protein": 20,
+          "fiber": 7,
+          "sodium": 450
+      },
+      "reviews": [
+          {
+              "user": "Mason",
+              "rating": 4,
+              "comment": "Flavorful and full of vegetables, but a bit salty."
+          }
+      ]
+  },
+  {
+      "id": "30",
+      "name": "Lentil Soup",
+      "price": "6.49",
+      "originalPrice": "8.49",
+      "discount": "23%",
+      "image": "https://img.freepik.com/premium-photo/red-lentil-soup-isolated-white-background_123827-18692.jpg",
+      "category": "Soup",
+      "description": "A warm and hearty soup made with lentils, carrots, celery, and a hint of cumin.",
+      "nutritionalInfo": {
+          "calories": 250,
+          "fat": 4,
+          "carbs": 35,
+          "protein": 15,
+          "fiber": 10,
+          "sodium": 400
+      },
+      "reviews": [
+          {
+              "user": "Isabella",
+              "rating": 5,
+              "comment": "Comforting and full of flavor!"
+          }
+      ]
+  },
+  {
+    "id": "31",
+    "name": "Avocado and Egg Toast",
+    "price": "5.99",
+    "originalPrice": "7.99",
+    "discount": "25%",
+    "image": "https://img.freepik.com/premium-photo/avocado-toast-with-egg-isolated-white-background_752903-163.jpg",
+    "category": "Breakfast",
+    "description": "A slice of whole-grain toast topped with smashed avocado, a poached egg, and chili flakes.",
+    "nutritionalInfo": {
+      "calories": 290,
+      "fat": 16,
+      "carbs": 25,
+      "protein": 12,
+      "fiber": 6,
+      "sodium": 320
+    },
+    "reviews": [
+      {
+        "user": "Ella",
+        "rating": 5,
+        "comment": "Simple and healthy, perfect for breakfast."
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "name": "Berry Smoothie Bowl",
+    "price": "6.49",
+    "originalPrice": "8.49",
+    "discount": "23%",
+    "image": "https://t4.ftcdn.net/jpg/06/30/03/19/360_F_630031979_JPehpZK44no6cB1kLohGyUsWlF3XDuc8.jpg",
+    "category": "Breakfast",
+    "description": "A bowl of blended berries, banana, and almond milk topped with granola, chia seeds, and fresh fruit.",
+    "nutritionalInfo": {
+      "calories": 310,
+      "fat": 8,
+      "carbs": 55,
+      "protein": 6,
+      "fiber": 10,
+      "sodium": 100
+    },
+    "reviews": [
+      {
+        "user": "James",
+        "rating": 5,
+        "comment": "Refreshing and energizing start to the day!"
+      }
+    ]
+  },
+  {
+    "id": "33",
+    "name": "Greek Yogurt Parfait",
+    "price": "4.99",
+    "originalPrice": "6.99",
+    "discount": "28%",
+    "image": "https://img.freepik.com/premium-photo/greek-yogurt-parfait-white-background_1247367-30496.jpg",
+    "category": "Snack",
+    "description": "Layers of Greek yogurt, fresh berries, and honey-drizzled granola.",
+    "nutritionalInfo": {
+      "calories": 250,
+      "fat": 5,
+      "carbs": 40,
+      "protein": 10,
+      "fiber": 5,
+      "sodium": 90
+    },
+    "reviews": [
+      {
+        "user": "Amelia",
+        "rating": 5,
+        "comment": "Light and delicious, with the perfect crunch!"
+      }
+    ]
+  },
+  {
+    "id": "34",
+    "name": "Stuffed Bell Peppers",
+    "price": "9.99",
+    "originalPrice": "12.49",
+    "discount": "20%",
+    "image": "https://thumbs.dreamstime.com/b/tasty-stuffed-bell-peppers-isolated-white-166781536.jpg",
+    "category": "Vegetarian",
+    "description": "Bell peppers stuffed with quinoa, black beans, corn, and cheese, baked to perfection.",
+    "nutritionalInfo": {
+      "calories": 380,
+      "fat": 12,
+      "carbs": 50,
+      "protein": 18,
+      "fiber": 8,
+      "sodium": 500
+    },
+    "reviews": [
+      {
+        "user": "Benjamin",
+        "rating": 4,
+        "comment": "Great flavors, but could use more cheese."
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "name": "Chicken Caesar Wrap",
+    "price": "8.49",
+    "originalPrice": "10.99",
+    "discount": "23%",
+    "image": "https://img.freepik.com/premium-photo/chicken-caesar-wrap-with-white-background-high-qual_889056-82328.jpg",
+    "category": "Sandwich",
+    "description": "Grilled chicken, romaine lettuce, Parmesan, and Caesar dressing in a whole-grain wrap.",
+    "nutritionalInfo": {
+      "calories": 430,
+      "fat": 15,
+      "carbs": 38,
+      "protein": 35,
+      "fiber": 4,
+      "sodium": 700
+    },
+    "reviews": [
+      {
+        "user": "Harper",
+        "rating": 5,
+        "comment": "Satisfying and easy to eat on the go."
+      }
+    ]
+  },
+  {
+    "id": "36",
+    "name": "Zucchini Noodles with Pesto",
+    "price": "7.99",
+    "originalPrice": "10.49",
+    "discount": "24%",
+    "image": "https://assets.bonappetit.com/photos/5f48ef0f683772f4cb97e816/master/pass/Basically-ZucchiniPasta05.jpg",
+    "category": "Vegetarian",
+    "description": "Spiralized zucchini noodles tossed with homemade basil pesto and cherry tomatoes.",
+    "nutritionalInfo": {
+      "calories": 270,
+      "fat": 14,
+      "carbs": 20,
+      "protein": 8,
+      "fiber": 5,
+      "sodium": 320
+    },
+    "reviews": [
+      {
+        "user": "Henry",
+        "rating": 5,
+        "comment": "A low-carb delight with rich flavors."
+      }
+    ]
+  },
+  {
+    "id": "37",
+    "name": "Mediterranean Hummus Plate",
+    "price": "6.99",
+    "originalPrice": "8.99",
+    "discount": "22%",
+    "image": "https://img.freepik.com/premium-photo/mediterranean-hummus-plate-icon-white-background_941600-39662.jpg",
+    "category": "Snack",
+    "description": "Hummus served with cucumber, carrots, cherry tomatoes, and whole-grain pita bread.",
+    "nutritionalInfo": {
+      "calories": 320,
+      "fat": 12,
+      "carbs": 40,
+      "protein": 8,
+      "fiber": 7,
+      "sodium": 250
+    },
+    "reviews": [
+      {
+        "user": "Grace",
+        "rating": 4,
+        "comment": "Tasty and fresh, but could use more veggies."
+      }
+    ]
+  },
+  {
+    "id": "38",
+    "name": "Spinach and Feta Omelette",
+    "price": "7.49",
+    "originalPrice": "9.99",
+    "discount": "25%",
+    "image": "https://i.pinimg.com/736x/0b/63/b2/0b63b2c488dc2922989abe0eaa856ce2.jpg",
+    "category": "Breakfast",
+    "description": "A fluffy omelette filled with fresh spinach, feta cheese, and herbs.",
+    "nutritionalInfo": {
+      "calories": 320,
+      "fat": 20,
+      "carbs": 5,
+      "protein": 25,
+      "fiber": 3,
+      "sodium": 480
+    },
+    "reviews": [
+      {
+        "user": "Jack",
+        "rating": 5,
+        "comment": "Light, savory, and full of flavor."
+      }
+    ]
+  },
+  {
+    "id": "39",
+    "name": "Shrimp and Avocado Salad",
+    "price": "12.49",
+    "originalPrice": "15.99",
+    "discount": "22%",
+    "image": "https://img.freepik.com/premium-photo/fresh-seafood-salad-with-shrimps-prawns-avocado-isolated-white-background-shrimps-salad_503274-2421.jpg",
+    "category": "Seafood",
+    "description": "Grilled shrimp with avocado, mixed greens, mango, and a citrus dressing.",
+    "nutritionalInfo": {
+      "calories": 380,
+      "fat": 18,
+      "carbs": 20,
+      "protein": 30,
+      "fiber": 6,
+      "sodium": 450
+    },
+    "reviews": [
+      {
+        "user": "Eleanor",
+        "rating": 5,
+        "comment": "Refreshing and packed with tropical flavors."
+      }
+    ]
+  },
+  {
+    "id": "40",
+    "name": "Whole-Grain Pasta Primavera",
+    "price": "9.49",
+    "originalPrice": "12.99",
+    "discount": "27%",
+    "image": "https://img.freepik.com/premium-photo/raw-brown-pasta-isolated-wholegrain-fusilli-pile-bowl-dry-whole-grain-noodle-raw-spelt-macaroni-healthy-italy-food-organic-meal-wholewheat-spiral-pasta-white-background_162695-9859.jpg",
+    "category": "Vegetarian",
+    "description": "Whole-grain pasta with a medley of roasted vegetables and a light garlic olive oil sauce.",
+    "nutritionalInfo": {
+      "calories": 420,
+      "fat": 10,
+      "carbs": 65,
+      "protein": 12,
+      "fiber": 8,
+      "sodium": 300
+    },
+    "reviews": [
+      {
+        "user": "Liam",
+        "rating": 5,
+        "comment": "A hearty and wholesome meal."
+      }
+    ]
+  }
+]
+
+
+
+
+
+
+
+
 // import { FastFoodItem } from "./type";
 // export const  fastFoodItems: FastFoodItem[] = [
 //   { id: '1', name: 'Burger', price: '5.99', image: require('./assets/burger.jpeg') },
@@ -433,428 +943,429 @@
 
 
 
-export const dealItems = [
-    { 
-      id: '1', 
-      name: 'Grilled Chicken Salad', 
-      price: '8.99', 
-      originalPrice: '10.99',
-      discount: '18%',
-      image: 'https://img.freepik.com/premium-photo/salad-with-grilled-chicken-isolated-white-background_185193-40021.jpg',
-      category: 'Salad',
-      description: 'Fresh greens topped with grilled chicken, cherry tomatoes, cucumbers, and a light vinaigrette dressing.',
-      nutritionalInfo: {
-        calories: 320,
-        fat: 10,
-        carbs: 15,
-        protein: 40,
-        fiber: 5,
-        sodium: 480
-      },
-      reviews: [
-        { user: 'Emma', rating: 5, comment: 'Perfectly balanced and delicious!' }
-      ]
-    },
-    { 
-      id: '2', 
-      name: 'Veggie Power Bowl', 
-      price: '7.49', 
-      originalPrice: '9.99',
-      discount: '25%',
-      image: 'https://www.shutterstock.com/image-photo/vegan-buddha-bowl-hearty-base-600nw-2476514331.jpg',
-      category: 'Vegetarian',
-      description: 'A nutrient-packed bowl with quinoa, roasted vegetables, avocado, and tahini sauce.',
-      nutritionalInfo: {
-        calories: 410,
-        fat: 15,
-        carbs: 50,
-        protein: 12,
-        fiber: 10,
-        sodium: 300
-      },
-      reviews: [
-        { user: 'Sophia', rating: 4, comment: 'Tasty and filling without being heavy.' }
-      ]
-    },
-    { 
-      id: '3', 
-      name: 'Salmon and Avocado Wrap', 
-      price: '9.99', 
-      originalPrice: '12.49',
-      discount: '20%',
-      image: 'https://www.shutterstock.com/image-photo/salmon-vegetables-salad-leaves-wrapped-260nw-2397815089.jpg',
-      category: 'Seafood',
-      description: 'A whole-grain tortilla filled with smoked salmon, avocado, arugula, and a tangy yogurt sauce.',
-      nutritionalInfo: {
-        calories: 360,
-        fat: 18,
-        carbs: 30,
-        protein: 25,
-        fiber: 6,
-        sodium: 600
-      },
-      reviews: [
-        { user: 'Liam', rating: 5, comment: 'Fresh and delicious with a hint of tang!' }
-      ]
-    },
-    { 
-      id: '4', 
-      name: 'Quinoa Salad with Feta', 
-      price: '7.99', 
-      originalPrice: '10.49',
-      discount: '23%',
-      image: 'https://img.freepik.com/free-photo/autumn-salad-with-apples-walnuts-isolated-white-backgroundxa_123827-25449.jpg',
-      category: 'Vegetarian',
-      description: 'A Mediterranean-inspired salad with quinoa, feta cheese, olives, and a lemon herb dressing.',
-      nutritionalInfo: {
-        calories: 350,
-        fat: 12,
-        carbs: 40,
-        protein: 15,
-        fiber: 7,
-        sodium: 520
-      },
-      reviews: [
-        { user: 'Zara', rating: 4, comment: 'Healthy and refreshing, but a bit salty.' }
-      ]
-    },
-    { 
-      id: '5', 
-      name: 'Turkey Avocado Sandwich', 
-      price: '8.49', 
-      originalPrice: '10.99',
-      discount: '23%',
-      image: 'https://img.freepik.com/premium-photo/turkey-avocado-sandwich-white-plate-white-background_864588-11416.jpg',
-      category: 'Sandwich',
-      description: 'A hearty whole-grain sandwich with sliced turkey, avocado, lettuce, and mustard.',
-      nutritionalInfo: {
-        calories: 420,
-        fat: 14,
-        carbs: 40,
-        protein: 30,
-        fiber: 5,
-        sodium: 670
-      },
-      reviews: [
-        { user: 'Ethan', rating: 5, comment: 'Great combination of flavors and super satisfying.' }
-      ]
-    },
-    { 
-      id: '6', 
-      name: 'Kale and Sweet Potato Bowl', 
-      price: '8.99', 
-      originalPrice: '11.49',
-      discount: '22%',
-      image: 'https://thefitchen.com/wp-content/uploads/2019/07/Sweet-Potato-Burrito-Bowls-1.jpg',
-      category: 'Vegetarian',
-      description: 'Roasted sweet potatoes, kale, and black beans with a drizzle of tahini dressing.',
-      nutritionalInfo: {
-        calories: 380,
-        fat: 10,
-        carbs: 55,
-        protein: 12,
-        fiber: 8,
-        sodium: 350
-      },
-      reviews: [
-        { user: 'Ava', rating: 5, comment: 'Rich in flavor and packed with nutrients.' }
-      ]
-    },
-    { 
-      id: '7', 
-      name: 'Chicken and Brown Rice Plate', 
-      price: '10.99', 
-      originalPrice: '14.99',
-      discount: '27%',
-      image: 'https://thumbs.dreamstime.com/b/plate-rice-fried-chicken-white-background-top-view-302886535.jpg',
-      category: 'Healthy Meal',
-      description: 'Grilled chicken breast served with steamed brown rice and broccoli.',
-      nutritionalInfo: {
-        calories: 460,
-        fat: 8,
-        carbs: 45,
-        protein: 50,
-        fiber: 6,
-        sodium: 500
-      },
-      reviews: [
-        { user: 'Oliver', rating: 5, comment: 'Simple yet flavorful and very healthy.' }
-      ]
-    },
-    { 
-      id: '8', 
-      name: 'Grilled Salmon with Veggies', 
-      price: '14.99', 
-      originalPrice: '18.99',
-      discount: '21%',
-      image: 'https://img.freepik.com/premium-photo/tasty-grilled-salmon-isolated-white-background_185193-42140.jpg',
-      category: 'Seafood',
-      description: 'Grilled salmon fillet served with steamed asparagus and roasted carrots.',
-      nutritionalInfo: {
-        calories: 540,
-        fat: 20,
-        carbs: 25,
-        protein: 45,
-        fiber: 8,
-        sodium: 550
-      },
-      reviews: [
-        { user: 'Charlotte', rating: 5, comment: 'The salmon is perfectly cooked, and the veggies are delicious!' }
-      ]
-    },
-    { 
-      id: '9', 
-      name: 'Tofu Stir-Fry', 
-      price: '9.49', 
-      originalPrice: '12.49',
-      discount: '24%',
-      image: 'https://img.freepik.com/premium-photo/fresh-colorful-tofu-stir-fry-white-background-healthy-vegan-meal-healthy-eating_763042-1989.jpg',
-      category: 'Vegetarian',
-      description: 'Tofu sautéed with bell peppers, broccoli, and snap peas in a ginger-soy sauce.',
-      nutritionalInfo: {
-        calories: 400,
-        fat: 12,
-        carbs: 50,
-        protein: 20,
-        fiber: 7,
-        sodium: 450
-      },
-      reviews: [
-        { user: 'Mason', rating: 4, comment: 'Flavorful and full of vegetables, but a bit salty.' }
-      ]
-    },
-    { 
-      id: '10', 
-      name: 'Lentil Soup', 
-      price: '6.49', 
-      originalPrice: '8.49',
-      discount: '23%',
-      image: 'https://img.freepik.com/premium-photo/red-lentil-soup-isolated-white-background_123827-18692.jpg',
-      category: 'Soup',
-      description: 'A warm and hearty soup made with lentils, carrots, celery, and a hint of cumin.',
-      nutritionalInfo: {
-        calories: 250,
-        fat: 4,
-        carbs: 35,
-        protein: 15,
-        fiber: 10,
-        sodium: 400
-      },
-      reviews: [
-        { user: 'Lucas', rating: 5, comment: 'Perfect comfort food on a cold day!' }
-      ]
-    },
-    {
-        id: '11',
-        name: 'Avocado and Egg Toast',
-        price: '5.99',
-        originalPrice: '7.99',
-        discount: '25%',
-        image: 'https://img.freepik.com/premium-photo/avocado-toast-with-egg-isolated-white-background_752903-163.jpg',
-        category: 'Breakfast',
-        description: 'A slice of whole-grain toast topped with smashed avocado, a poached egg, and chili flakes.',
-        nutritionalInfo: {
-          calories: 290,
-          fat: 16,
-          carbs: 25,
-          protein: 12,
-          fiber: 6,
-          sodium: 320
-        },
-        reviews: [
-          { user: 'Ella', rating: 5, comment: 'Simple and healthy, perfect for breakfast.' }
-        ]
-      },
-      {
-        id: '12',
-        name: 'Berry Smoothie Bowl',
-        price: '6.49',
-        originalPrice: '8.49',
-        discount: '23%',
-        image: 'https://t4.ftcdn.net/jpg/06/30/03/19/360_F_630031979_JPehpZK44no6cB1kLohGyUsWlF3XDuc8.jpg',
-        category: 'Breakfast',
-        description: 'A bowl of blended berries, banana, and almond milk topped with granola, chia seeds, and fresh fruit.',
-        nutritionalInfo: {
-          calories: 310,
-          fat: 8,
-          carbs: 55,
-          protein: 6,
-          fiber: 10,
-          sodium: 100
-        },
-        reviews: [
-          { user: 'James', rating: 5, comment: 'Refreshing and energizing start to the day!' }
-        ]
-      },
-      {
-        id: '13',
-        name: 'Greek Yogurt Parfait',
-        price: '4.99',
-        originalPrice: '6.99',
-        discount: '28%',
-        image: 'https://img.freepik.com/premium-photo/greek-yogurt-parfait-white-background_1247367-30496.jpg',
-        category: 'Snack',
-        description: 'Layers of Greek yogurt, fresh berries, and honey-drizzled granola.',
-        nutritionalInfo: {
-          calories: 250,
-          fat: 5,
-          carbs: 40,
-          protein: 10,
-          fiber: 5,
-          sodium: 90
-        },
-        reviews: [
-          { user: 'Amelia', rating: 5, comment: 'Light and delicious, with the perfect crunch!' }
-        ]
-      },
-      {
-        id: '14',
-        name: 'Stuffed Bell Peppers',
-        price: '9.99',
-        originalPrice: '12.49',
-        discount: '20%',
-        image: 'https://thumbs.dreamstime.com/b/tasty-stuffed-bell-peppers-isolated-white-166781536.jpg',
-        category: 'Vegetarian',
-        description: 'Bell peppers stuffed with quinoa, black beans, corn, and cheese, baked to perfection.',
-        nutritionalInfo: {
-          calories: 380,
-          fat: 12,
-          carbs: 50,
-          protein: 18,
-          fiber: 8,
-          sodium: 500
-        },
-        reviews: [
-          { user: 'Benjamin', rating: 4, comment: 'Great flavors, but could use more cheese.' }
-        ]
-      },
-      {
-        id: '15',
-        name: 'Chicken Caesar Wrap',
-        price: '8.49',
-        originalPrice: '10.99',
-        discount: '23%',
-        image: 'https://img.freepik.com/premium-photo/chicken-caesar-wrap-with-white-background-high-qual_889056-82328.jpg',
-        category: 'Sandwich',
-        description: 'Grilled chicken, romaine lettuce, Parmesan, and Caesar dressing in a whole-grain wrap.',
-        nutritionalInfo: {
-          calories: 430,
-          fat: 15,
-          carbs: 38,
-          protein: 35,
-          fiber: 4,
-          sodium: 700
-        },
-        reviews: [
-          { user: 'Harper', rating: 5, comment: 'Satisfying and easy to eat on the go.' }
-        ]
-      },
-      {
-        id: '16',
-        name: 'Zucchini Noodles with Pesto',
-        price: '7.99',
-        originalPrice: '10.49',
-        discount: '24%',
-        image: 'https://assets.bonappetit.com/photos/5f48ef0f683772f4cb97e816/master/pass/Basically-ZucchiniPasta05.jpg',
-        category: 'Vegetarian',
-        description: 'Spiralized zucchini noodles tossed with homemade basil pesto and cherry tomatoes.',
-        nutritionalInfo: {
-          calories: 270,
-          fat: 14,
-          carbs: 20,
-          protein: 8,
-          fiber: 5,
-          sodium: 320
-        },
-        reviews: [
-          { user: 'Henry', rating: 5, comment: 'A low-carb delight with rich flavors.' }
-        ]
-      },
-      {
-        id: '17',
-        name: 'Mediterranean Hummus Plate',
-        price: '6.99',
-        originalPrice: '8.99',
-        discount: '22%',
-        image: 'https://img.freepik.com/premium-photo/mediterranean-hummus-plate-icon-white-background_941600-39662.jpg',
-        category: 'Snack',
-        description: 'Hummus served with cucumber, carrots, cherry tomatoes, and whole-grain pita bread.',
-        nutritionalInfo: {
-          calories: 320,
-          fat: 12,
-          carbs: 40,
-          protein: 8,
-          fiber: 7,
-          sodium: 250
-        },
-        reviews: [
-          { user: 'Grace', rating: 4, comment: 'Tasty and fresh, but could use more veggies.' }
-        ]
-      },
-      {
-        id: '18',
-        name: 'Spinach and Feta Omelette',
-        price: '7.49',
-        originalPrice: '9.99',
-        discount: '25%',
-        image: 'https://i.pinimg.com/736x/0b/63/b2/0b63b2c488dc2922989abe0eaa856ce2.jpg',
-        category: 'Breakfast',
-        description: 'A fluffy omelette filled with fresh spinach, feta cheese, and herbs.',
-        nutritionalInfo: {
-          calories: 320,
-          fat: 20,
-          carbs: 5,
-          protein: 25,
-          fiber: 3,
-          sodium: 480
-        },
-        reviews: [
-          { user: 'Jack', rating: 5, comment: 'Light, savory, and full of flavor.' }
-        ]
-      },
-      {
-        id: '19',
-        name: 'Shrimp and Avocado Salad',
-        price: '12.49',
-        originalPrice: '15.99',
-        discount: '22%',
-        image: 'https://img.freepik.com/premium-photo/fresh-seafood-salad-with-shrimps-prawns-avocado-isolated-white-background-shrimps-salad_503274-2421.jpg',
-        category: 'Seafood',
-        description: 'Grilled shrimp with avocado, mixed greens, mango, and a citrus dressing.',
-        nutritionalInfo: {
-          calories: 380,
-          fat: 18,
-          carbs: 20,
-          protein: 30,
-          fiber: 6,
-          sodium: 450
-        },
-        reviews: [
-          { user: 'Eleanor', rating: 5, comment: 'Refreshing and packed with tropical flavors.' }
-        ]
-      },
-      {
-        id: '20',
-        name: 'Whole-Grain Pasta Primavera',
-        price: '9.49',
-        originalPrice: '12.99',
-        discount: '27%',
-        image: 'https://img.freepik.com/premium-photo/raw-brown-pasta-isolated-wholegrain-fusilli-pile-bowl-dry-whole-grain-noodle-raw-spelt-macaroni-healthy-italy-food-organic-meal-wholewheat-spiral-pasta-white-background_162695-9859.jpg',
-        category: 'Vegetarian',
-        description: 'Whole-grain pasta with sautéed zucchini, bell peppers, cherry tomatoes, and Parmesan cheese.',
-        nutritionalInfo: {
-          calories: 420,
-          fat: 12,
-          carbs: 65,
-          protein: 14,
-          fiber: 8,
-          sodium: 400
-        },
-        reviews: [
-          { user: 'Matthew', rating: 4, comment: 'Hearty and flavorful, but could use more veggies.' }
-        ]
-      }
-  ];
+// export const dealItems = [
+//     { 
+//       id: '21', 
+//       name: 'Grilled Chicken Salad', 
+//       price: '8.99', 
+//       originalPrice: '10.99',
+//       discount: '18%',
+//       image: 'https://img.freepik.com/premium-photo/salad-with-grilled-chicken-isolated-white-background_185193-40021.jpg',
+//       category: 'Salad',
+//       description: 'Fresh greens topped with grilled chicken, cherry tomatoes, cucumbers, and a light vinaigrette dressing.',
+//       nutritionalInfo: {
+//         calories: 320,
+//         fat: 10,
+//         carbs: 15,
+//         protein: 40,
+//         fiber: 5,
+//         sodium: 480
+//       },
+//       reviews: [
+//         { user: 'Emma', rating: 5, comment: 'Perfectly balanced and delicious!' }
+//       ]
+//     },
+//     { 
+//       id: '22', 
+//       name: 'Veggie Power Bowl', 
+//       price: '7.49', 
+//       originalPrice: '9.99',
+//       discount: '25%',
+//       image: 'https://www.shutterstock.com/image-photo/vegan-buddha-bowl-hearty-base-600nw-2476514331.jpg',
+//       category: 'Vegetarian',
+//       description: 'A nutrient-packed bowl with quinoa, roasted vegetables, avocado, and tahini sauce.',
+//       nutritionalInfo: {
+//         calories: 410,
+//         fat: 15,
+//         carbs: 50,
+//         protein: 12,
+//         fiber: 10,
+//         sodium: 300
+//       },
+//       reviews: [
+//         { user: 'Sophia', rating: 4, comment: 'Tasty and filling without being heavy.' }
+//       ]
+//     },
+//     { 
+//       id: '23', 
+//       name: 'Salmon and Avocado Wrap', 
+//       price: '9.99', 
+//       originalPrice: '12.49',
+//       discount: '20%',
+//       image: 'https://www.shutterstock.com/image-photo/salmon-vegetables-salad-leaves-wrapped-260nw-2397815089.jpg',
+//       category: 'Seafood',
+//       description: 'A whole-grain tortilla filled with smoked salmon, avocado, arugula, and a tangy yogurt sauce.',
+//       nutritionalInfo: {
+//         calories: 360,
+//         fat: 18,
+//         carbs: 30,
+//         protein: 25,
+//         fiber: 6,
+//         sodium: 600
+//       },
+//       reviews: [
+//         { user: 'Liam', rating: 5, comment: 'Fresh and delicious with a hint of tang!' }
+//       ]
+//     },
+//     { 
+//       id: '24', 
+//       name: 'Quinoa Salad with Feta', 
+//       price: '7.99', 
+//       originalPrice: '10.49',
+//       discount: '23%',
+//       image: 'https://img.freepik.com/free-photo/autumn-salad-with-apples-walnuts-isolated-white-backgroundxa_123827-25449.jpg',
+//       category: 'Vegetarian',
+//       description: 'A Mediterranean-inspired salad with quinoa, feta cheese, olives, and a lemon herb dressing.',
+//       nutritionalInfo: {
+//         calories: 350,
+//         fat: 12,
+//         carbs: 40,
+//         protein: 15,
+//         fiber: 7,
+//         sodium: 520
+//       },
+//       reviews: [
+//         { user: 'Zara', rating: 4, comment: 'Healthy and refreshing, but a bit salty.' }
+//       ]
+//     },
+//     { 
+//       id: '25', 
+//       name: 'Turkey Avocado Sandwich', 
+//       price: '8.49', 
+//       originalPrice: '10.99',
+//       discount: '23%',
+//       image: 'https://img.freepik.com/premium-photo/turkey-avocado-sandwich-white-plate-white-background_864588-11416.jpg',
+//       category: 'Sandwich',
+//       description: 'A hearty whole-grain sandwich with sliced turkey, avocado, lettuce, and mustard.',
+//       nutritionalInfo: {
+//         calories: 420,
+//         fat: 14,
+//         carbs: 40,
+//         protein: 30,
+//         fiber: 5,
+//         sodium: 670
+//       },
+//       reviews: [
+//         { user: 'Ethan', rating: 5, comment: 'Great combination of flavors and super satisfying.' }
+//       ]
+//     },
+//     { 
+//       id: '26', 
+//       name: 'Kale and Sweet Potato Bowl', 
+//       price: '8.99', 
+//       originalPrice: '11.49',
+//       discount: '22%',
+//       image: 'https://thefitchen.com/wp-content/uploads/2019/07/Sweet-Potato-Burrito-Bowls-1.jpg',
+//       category: 'Vegetarian',
+//       description: 'Roasted sweet potatoes, kale, and black beans with a drizzle of tahini dressing.',
+//       nutritionalInfo: {
+//         calories: 380,
+//         fat: 10,
+//         carbs: 55,
+//         protein: 12,
+//         fiber: 8,
+//         sodium: 350
+//       },
+//       reviews: [
+//         { user: 'Ava', rating: 5, comment: 'Rich in flavor and packed with nutrients.' }
+//       ]
+//     },
+//     { 
+//       id: '27', 
+//       name: 'Chicken and Brown Rice Plate', 
+//       price: '10.99', 
+//       originalPrice: '14.99',
+//       discount: '27%',
+//       image: 'https://thumbs.dreamstime.com/b/plate-rice-fried-chicken-white-background-top-view-302886535.jpg',
+//       category: 'Healthy Meal',
+//       description: 'Grilled chicken breast served with steamed brown rice and broccoli.',
+//       nutritionalInfo: {
+//         calories: 460,
+//         fat: 8,
+//         carbs: 45,
+//         protein: 50,
+//         fiber: 6,
+//         sodium: 500
+//       },
+//       reviews: [
+//         { user: 'Oliver', rating: 5, comment: 'Simple yet flavorful and very healthy.' }
+//       ]
+//     },
+//     { 
+//       id: '28', 
+//       name: 'Grilled Salmon with Veggies', 
+//       price: '14.99', 
+//       originalPrice: '18.99',
+//       discount: '21%',
+//       image: 'https://img.freepik.com/premium-photo/tasty-grilled-salmon-isolated-white-background_185193-42140.jpg',
+//       category: 'Seafood',
+//       description: 'Grilled salmon fillet served with steamed asparagus and roasted carrots.',
+//       nutritionalInfo: {
+//         calories: 540,
+//         fat: 20,
+//         carbs: 25,
+//         protein: 45,
+//         fiber: 8,
+//         sodium: 550
+//       },
+//       reviews: [
+//         { user: 'Charlotte', rating: 5, comment: 'The salmon is perfectly cooked, and the veggies are delicious!' }
+//       ]
+//     },
+//     { 
+//       id: '29', 
+//       name: 'Tofu Stir-Fry', 
+//       price: '9.49', 
+//       originalPrice: '12.49',
+//       discount: '24%',
+//       image: 'https://img.freepik.com/premium-photo/fresh-colorful-tofu-stir-fry-white-background-healthy-vegan-meal-healthy-eating_763042-1989.jpg',
+//       category: 'Vegetarian',
+//       description: 'Tofu sautéed with bell peppers, broccoli, and snap peas in a ginger-soy sauce.',
+//       nutritionalInfo: {
+//         calories: 400,
+//         fat: 12,
+//         carbs: 50,
+//         protein: 20,
+//         fiber: 7,
+//         sodium: 450
+//       },
+//       reviews: [
+//         { user: 'Mason', rating: 4, comment: 'Flavorful and full of vegetables, but a bit salty.' }
+//       ]
+//     },
+//     { 
+//       id: '30', 
+//       name: 'Lentil Soup', 
+//       price: '6.49', 
+//       originalPrice: '8.49',
+//       discount: '23%',
+//       image: 'https://img.freepik.com/premium-photo/red-lentil-soup-isolated-white-background_123827-18692.jpg',
+//       category: 'Soup',
+//       description: 'A warm and hearty soup made with lentils, carrots, celery, and a hint of cumin.',
+//       nutritionalInfo: {
+//         calories: 250,
+//         fat: 4,
+//         carbs: 35,
+//         protein: 15,
+//         fiber: 10,
+//         sodium: 400
+//       },
+//       reviews: [
+//         { user: 'Lucas', rating: 5, comment: 'Perfect comfort food on a cold day!' }
+//       ]
+//     },
+//     {
+//         id: '31',
+//         name: 'Avocado and Egg Toast',
+//         price: '5.99',
+//         originalPrice: '7.99',
+//         discount: '25%',
+//         image: 'https://img.freepik.com/premium-photo/avocado-toast-with-egg-isolated-white-background_752903-163.jpg',
+//         category: 'Breakfast',
+//         description: 'A slice of whole-grain toast topped with smashed avocado, a poached egg, and chili flakes.',
+//         nutritionalInfo: {
+//           calories: 290,
+//           fat: 16,
+//           carbs: 25,
+//           protein: 12,
+//           fiber: 6,
+//           sodium: 320
+//         },
+//         reviews: [
+//           { user: 'Ella', rating: 5, comment: 'Simple and healthy, perfect for breakfast.' }
+//         ]
+//       },
+//       {
+//         id: '32',
+//         name: 'Berry Smoothie Bowl',
+//         price: '6.49',
+//         originalPrice: '8.49',
+//         discount: '23%',
+//         image: 'https://t4.ftcdn.net/jpg/06/30/03/19/360_F_630031979_JPehpZK44no6cB1kLohGyUsWlF3XDuc8.jpg',
+//         category: 'Breakfast',
+//         description: 'A bowl of blended berries, banana, and almond milk topped with granola, chia seeds, and fresh fruit.',
+//         nutritionalInfo: {
+//           calories: 310,
+//           fat: 8,
+//           carbs: 55,
+//           protein: 6,
+//           fiber: 10,
+//           sodium: 100
+//         },
+//         reviews: [
+//           { user: 'James', rating: 5, comment: 'Refreshing and energizing start to the day!' }
+//         ]
+//       },
+//       {
+//         id: '33',
+//         name: 'Greek Yogurt Parfait',
+//         price: '4.99',
+//         originalPrice: '6.99',
+//         discount: '28%',
+//         image: 'https://img.freepik.com/premium-photo/greek-yogurt-parfait-white-background_1247367-30496.jpg',
+//         category: 'Snack',
+//         description: 'Layers of Greek yogurt, fresh berries, and honey-drizzled granola.',
+//         nutritionalInfo: {
+//           calories: 250,
+//           fat: 5,
+//           carbs: 40,
+//           protein: 10,
+//           fiber: 5,
+//           sodium: 90
+//         },
+//         reviews: [
+//           { user: 'Amelia', rating: 5, comment: 'Light and delicious, with the perfect crunch!' }
+//         ]
+//       },
+//       {
+//         id: '34',
+//         name: 'Stuffed Bell Peppers',
+//         price: '9.99',
+//         originalPrice: '12.49',
+//         discount: '20%',
+//         image: 'https://thumbs.dreamstime.com/b/tasty-stuffed-bell-peppers-isolated-white-166781536.jpg',
+//         category: 'Vegetarian',
+//         description: 'Bell peppers stuffed with quinoa, black beans, corn, and cheese, baked to perfection.',
+//         nutritionalInfo: {
+//           calories: 380,
+//           fat: 12,
+//           carbs: 50,
+//           protein: 18,
+//           fiber: 8,
+//           sodium: 500
+//         },
+//         reviews: [
+//           { user: 'Benjamin', rating: 4, comment: 'Great flavors, but could use more cheese.' }
+//         ]
+//       },
+//       {
+//         id: '35',
+//         name: 'Chicken Caesar Wrap',
+//         price: '8.49',
+//         originalPrice: '10.99',
+//         discount: '23%',
+//         image: 'https://img.freepik.com/premium-photo/chicken-caesar-wrap-with-white-background-high-qual_889056-82328.jpg',
+//         category: 'Sandwich',
+//         description: 'Grilled chicken, romaine lettuce, Parmesan, and Caesar dressing in a whole-grain wrap.',
+//         nutritionalInfo: {
+//           calories: 430,
+//           fat: 15,
+//           carbs: 38,
+//           protein: 35,
+//           fiber: 4,
+//           sodium: 700
+//         },
+//         reviews: [
+//           { user: 'Harper', rating: 5, comment: 'Satisfying and easy to eat on the go.' }
+//         ]
+//       },
+//       {
+//         id: '36',
+//         name: 'Zucchini Noodles with Pesto',
+//         price: '7.99',
+//         originalPrice: '10.49',
+//         discount: '24%',
+//         image: 'https://assets.bonappetit.com/photos/5f48ef0f683772f4cb97e816/master/pass/Basically-ZucchiniPasta05.jpg',
+//         category: 'Vegetarian',
+//         description: 'Spiralized zucchini noodles tossed with homemade basil pesto and cherry tomatoes.',
+//         nutritionalInfo: {
+//           calories: 270,
+//           fat: 14,
+//           carbs: 20,
+//           protein: 8,
+//           fiber: 5,
+//           sodium: 320
+//         },
+//         reviews: [
+//           { user: 'Henry', rating: 5, comment: 'A low-carb delight with rich flavors.' }
+//         ]
+//       },
+//       {
+//         id: '37',
+//         name: 'Mediterranean Hummus Plate',
+//         price: '6.99',
+//         originalPrice: '8.99',
+//         discount: '22%',
+//         image: 'https://img.freepik.com/premium-photo/mediterranean-hummus-plate-icon-white-background_941600-39662.jpg',
+//         category: 'Snack',
+//         description: 'Hummus served with cucumber, carrots, cherry tomatoes, and whole-grain pita bread.',
+//         nutritionalInfo: {
+//           calories: 320,
+//           fat: 12,
+//           carbs: 40,
+//           protein: 8,
+//           fiber: 7,
+//           sodium: 250
+//         },
+//         reviews: [
+//           { user: 'Grace', rating: 4, comment: 'Tasty and fresh, but could use more veggies.' }
+//         ]
+//       },
+//       {
+//         id: '38',
+//         name: 'Spinach and Feta Omelette',
+//         price: '7.49',
+//         originalPrice: '9.99',
+//         discount: '25%',
+//         image: 'https://i.pinimg.com/736x/0b/63/b2/0b63b2c488dc2922989abe0eaa856ce2.jpg',
+//         category: 'Breakfast',
+//         description: 'A fluffy omelette filled with fresh spinach, feta cheese, and herbs.',
+//         nutritionalInfo: {
+//           calories: 320,
+//           fat: 20,
+//           carbs: 5,
+//           protein: 25,
+//           fiber: 3,
+//           sodium: 480
+//         },
+//         reviews: [
+//           { user: 'Jack', rating: 5, comment: 'Light, savory, and full of flavor.' }
+//         ]
+//       },
+//       {
+//         id: '39',
+//         name: 'Shrimp and Avocado Salad',
+//         price: '12.49',
+//         originalPrice: '15.99',
+//         discount: '22%',
+//         image: 'https://img.freepik.com/premium-photo/fresh-seafood-salad-with-shrimps-prawns-avocado-isolated-white-background-shrimps-salad_503274-2421.jpg',
+//         category: 'Seafood',
+//         description: 'Grilled shrimp with avocado, mixed greens, mango, and a citrus dressing.',
+//         nutritionalInfo: {
+//           calories: 380,
+//           fat: 18,
+//           carbs: 20,
+//           protein: 30,
+//           fiber: 6,
+//           sodium: 450
+//         },
+//         reviews: [
+//           { user: 'Eleanor', rating: 5, comment: 'Refreshing and packed with tropical flavors.' }
+//         ]
+//       },
+//       {
+//         id: '40',
+//         name: 'Whole-Grain Pasta Primavera',
+//         price: '9.49',
+//         originalPrice: '12.99',
+//         discount: '27%',
+//         image: 'https://img.freepik.com/premium-photo/raw-brown-pasta-isolated-wholegrain-fusilli-pile-bowl-dry-whole-grain-noodle-raw-spelt-macaroni-healthy-italy-food-organic-meal-wholewheat-spiral-pasta-white-background_162695-9859.jpg',
+//         category: 'Vegetarian',
+//         description: 'Whole-grain pasta with sautéed zucchini, bell peppers, cherry tomatoes, and Parmesan cheese.',
+//         nutritionalInfo: {
+//           calories: 420,
+//           fat: 12,
+//           carbs: 65,
+//           protein: 14,
+//           fiber: 8,
+//           sodium: 400
+//         },
+//         reviews: [
+//           { user: 'Matthew', rating: 4, comment: 'Hearty and flavorful, but could use more veggies.' }
+//         ]
+//       },
+          
+//   ];
   
 
 

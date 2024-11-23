@@ -5,6 +5,7 @@ export type FastFoodItem = {
   id: string;
   name: string;
   price: string;
+  originalPrice:string
   image: string; // Image is a string URL
   category: string;
   description: string; // Added description field
