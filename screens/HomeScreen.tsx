@@ -1,3 +1,4 @@
+//HomeScreen.tsx:
 import React, { useCallback } from 'react';
 import { FlatList, TouchableOpacity, Text, ActivityIndicator, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
