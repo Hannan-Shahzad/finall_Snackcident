@@ -392,8 +392,8 @@ const Cart: React.FC = () => {
       ) : (
         <Text style={styles.emptyCartText}>Your cart is empty.</Text>
       )}
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.backButtonText}>Back to Home</Text>
+      <TouchableOpacity style={styles.backButton} onPress={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Home'))}>
+        <Text style={styles.backButtonText}>Back</Text>
       </TouchableOpacity>
     </View>
   );
@@ -447,7 +447,7 @@ const styles = StyleSheet.create({
   quantityButton: {
     backgroundColor: '#ff6347',
     paddingVertical: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     borderRadius: 5,
     marginHorizontal: 5,
   },
@@ -485,6 +485,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 20,
+
   },
   backButtonText: {
     color: '#fff',

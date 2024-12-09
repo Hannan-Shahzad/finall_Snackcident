@@ -158,7 +158,7 @@ const FastFoodCard: React.FC<FastFoodCardProps> = React.memo(
             <Ionicons
               name={isFavourite ? 'heart' : 'heart-outline'}
               size={24}
-              color={isFavourite ? 'red' : '#aaa'}
+              color={isFavourite ? '#ff6347' : '#aaa'}
             />
           </Animated.View>
         </TouchableOpacity>
@@ -172,34 +172,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 15,
     padding: 12,
-    width: '48%',
-    marginBottom: 15,
+    width: '46%', // Allows for spacing between cards in a grid layout
+    marginBottom: 10, // Space between rows
+    marginHorizontal: '2%', // Space between columns
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 3,
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3, // Adds slight elevation for depth
   },
   image: {
     width: '100%',
     height: 120,
     borderRadius: 12,
+    marginBottom: 10, // Space between image and text
   },
   textContainer: {
-    marginTop: 10,
     alignItems: 'center',
   },
   name: {
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
+    marginBottom: 5, // Space between name and price
   },
   priceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5,
   },
   originalPrice: {
     fontSize: 14,
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   price: {
-    fontSize: 14,
+    fontSize: 16,
     color: '#000',
     fontWeight: 'bold',
   },

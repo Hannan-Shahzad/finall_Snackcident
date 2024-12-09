@@ -42,12 +42,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ fastFoodItems, favouriteItems, 
           contentContainerStyle={styles.listContainer}
         />
       )}
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.cartButton}
         onPress={() => navigation.navigate('Cart')}
       >
         <Text style={styles.cartButtonText}>Go To Cart</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     
     </View>
     //</SafeAreaView>
@@ -56,7 +56,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ fastFoodItems, favouriteItems, 
 
 const styles = StyleSheet.create({
   safeAreaContainer: { flex: 1, backgroundColor: '#fff' },
-  listContainer: { paddingLeft: 15 },
+  listContainer: { padding: 2 , },
   cartButton: {
     position: 'absolute',
     bottom: 10,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   mainView:{
-    marginTop:'4%',
+    marginTop:'2%',
   },
   cartButtonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
 });

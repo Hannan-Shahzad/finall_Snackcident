@@ -1,27 +1,22 @@
-
 //App.tsx
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Dimensions, Animated, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Dimensions, Animated, TouchableOpacity, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TabView, SceneRendererProps, NavigationState } from 'react-native-tab-view';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import FastFoodCard from './components/FastFoodCard';
+import LoaderScreen from './screens/LoaderScreen';
+import SplashScreen from './screens/SplashScreen';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Favourites from './components/Favourites';
 import Deals from './components/Deals';
 import Snacks from './components/Snacks';
+import TopBar from './components/TopBar';
 import HomeScreen from './screens/HomeScreen';
-
-
+import { dealsData } from './components/Deals';
 import { fetchAndStoreData, loadDataFromStorage } from './services/dataService';
 import { FastFoodItem } from './type';
-import AppSwiper from './components/AppSwiper';
-import { ScrollView } from 'react-native-gesture-handler';
-import Swiper from 'react-native-swiper';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -39,6 +34,7 @@ export default function App() {
   const [favouriteItems, setFavouriteItems] = useState<FastFoodItem[]>([]);
   const [fastFoodItems, setFastFoodItems] = useState<FastFoodItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentScreen, setCurrentScreen] = useState<'splash' | 'loader' | 'main'>('splash');
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'home', title: 'Home' },
@@ -46,13 +42,24 @@ export default function App() {
     { key: 'deals', title: 'Deals' },
     { key: 'favourites', title: 'Favourites' },
   ]);
-
   const [indicatorPosition] = useState(new Animated.Value(0));
 
+  // Splash and Loader Screen Transitions
+  useEffect(() => {
+    const timer1 = setTimeout(() => setCurrentScreen('loader'), 3000); // Splash duration
+    const timer2 = setTimeout(() => setCurrentScreen('main'), 6000); // Loader duration
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
+
+  // Load data from storage on initial render
   useEffect(() => {
     loadDataFromStorage(setFastFoodItems, setIsLoading, fetchAndStoreData);
   }, []);
-
+//this is where data is coming from 
+  // Favourites Handling
   const handleToggleFavourite = (item: FastFoodItem) => {
     setFavouriteItems((prevItems) => {
       const itemExists = prevItems.find((favItem) => favItem.id === item.id);
@@ -68,6 +75,7 @@ export default function App() {
     setFavouriteItems((prevItems) => prevItems.filter((favItem) => favItem.id !== itemId));
   };
 
+  // TabView Scene Rendering
   const renderScene = ({ route }: any, navigation: any) => {
     switch (route.key) {
       case 'home':
@@ -90,7 +98,13 @@ export default function App() {
           />
         );
       case 'deals':
-        return <Deals favouriteItems={favouriteItems} onToggleFavourite={handleToggleFavourite} navigation={navigation} />;
+        return (
+          <Deals
+            favouriteItems={favouriteItems}
+            onToggleFavourite={handleToggleFavourite}
+            navigation={navigation}
+          />
+        );
       case 'favourites':
         return (
           <Favourites
@@ -104,6 +118,7 @@ export default function App() {
     }
   };
 
+  // TabView Tab Bar Rendering
   const renderTabBar = (props: SceneRendererProps & { navigationState: NavigationState<any> }) => {
     const handleTabPress = (index: number) => {
       setIndex(index);
@@ -137,16 +152,23 @@ export default function App() {
     );
   };
 
+  // Main Return with Conditional Rendering for Splash and Loader Screens
+  if (currentScreen === 'splash') {
+    return <SplashScreen />;
+  }
+
+  if (currentScreen === 'loader') {
+    return <LoaderScreen />;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {({ navigation }) => (
-            
             <SafeAreaView style={{ flex: 1 }}>
-              {/* <AppSwiper/> */}
-     
+              <TopBar fastFoodItems={fastFoodItems} dealsData={dealsData} />
+             
               <TabView
                 navigationState={{ index, routes }}
                 renderScene={({ route }) => renderScene({ route }, navigation)}
@@ -167,15 +189,10 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ title: 'Details' }} />
         <Stack.Screen name="Cart" component={Cart} options={{ title: 'Your Cart' }} />
-        
       </Stack.Navigator>
-      
     </NavigationContainer>
-  
   );
-  
 }
-
 
 const styles = StyleSheet.create({
   tabBarContainer: { flexDirection: 'row', backgroundColor: '#fff', paddingVertical: 5, position: 'relative' },
@@ -184,11 +201,8 @@ const styles = StyleSheet.create({
   tabLabel: { fontWeight: 'bold', color: '#000' },
   activeTabLabel: { color: '#ff6347' },
   tabIndicator: { position: 'absolute', height: 2, backgroundColor: '#ff6347', width: '25%', bottom: 0 },
-  tabView: {
-         flex: 1,
-       }
+  tabView: { flex: 1 },
 });
-
 
 
 

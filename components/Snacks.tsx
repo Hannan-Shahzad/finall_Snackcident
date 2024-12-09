@@ -40,14 +40,14 @@ const Snacks: React.FC<SnacksProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f1f1f1',
   },
   listContainer: {
-    paddingLeft: 15, // Adjusted padding to the left
-    paddingRight: 10, // Adjusted padding to the right
+    paddingLeft: 5, // Adjusted padding to the left
+    paddingRight: 5, // Adjusted padding to the right
     justifyContent: 'space-between', // Adds space between columns
     paddingVertical: 10, // Adds vertical padding to the container
-    backgroundColor:'#fff'
+    backgroundColor:'#f1f1f1'
   },
 });
 

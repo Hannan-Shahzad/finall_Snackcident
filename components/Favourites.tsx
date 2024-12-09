@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     borderWidth: 1,
     borderColor: '#e0e0e0',
+    maxHeight:135
   },
   cardContent: {
     flex: 1,
