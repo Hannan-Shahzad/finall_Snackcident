@@ -13,8 +13,12 @@ import Favourites from './components/Favourites';
 import Deals from './components/Deals';
 import Snacks from './components/Snacks';
 import TopBar from './components/TopBar';
+import SignUpScreen from './screens/SignUpScreen';
+import SignInScreen from './screens/SignInScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
 import HomeScreen from './screens/HomeScreen';
-import { dealsData } from './components/Deals';
+
 import { fetchAndStoreData, loadDataFromStorage } from './services/dataService';
 import { FastFoodItem } from './type';
 
@@ -25,6 +29,9 @@ export type RootStackParamList = {
   Favourites: undefined;
   Deals: undefined;
   Snacks: undefined;
+  SignUpScreen:any;
+  SignInScreen:any;
+  ProfileScreen:any
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -33,6 +40,7 @@ export default function App() {
   const [cartItems, setCartItems] = useState<FastFoodItem[]>([]);
   const [favouriteItems, setFavouriteItems] = useState<FastFoodItem[]>([]);
   const [fastFoodItems, setFastFoodItems] = useState<FastFoodItem[]>([]);
+  
   const [isLoading, setIsLoading] = useState(true);
   const [currentScreen, setCurrentScreen] = useState<'splash' | 'loader' | 'main'>('splash');
   const [index, setIndex] = useState(0);
@@ -167,7 +175,7 @@ export default function App() {
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {({ navigation }) => (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopBar fastFoodItems={fastFoodItems} dealsData={dealsData} />
+              <TopBar fastFoodItems={fastFoodItems}  />
              
               <TabView
                 navigationState={{ index, routes }}
@@ -189,6 +197,9 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ title: 'Details' }} />
         <Stack.Screen name="Cart" component={Cart} options={{ title: 'Your Cart' }} />
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen name="SignInScreen" component={SignInScreen} />
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

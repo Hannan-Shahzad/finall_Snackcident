@@ -14,7 +14,7 @@ interface DealsProps {
   onToggleFavourite: (item: FastFoodItem) => void;
   navigation: any;
 }
- export let dealsData:any;
+ 
   
 const Deals: React.FC<DealsProps> = ({ favouriteItems, onToggleFavourite, navigation }) => {
   const [dealsItems, setDealsItems] = useState<FastFoodItem[]>([]);
@@ -25,7 +25,7 @@ const Deals: React.FC<DealsProps> = ({ favouriteItems, onToggleFavourite, naviga
   const fetchDealsData = async () => {
     try {
       const response = await fetch('https://ayaan-ahmad24.github.io/data/data3.json');
-        dealsData = await response.json();
+       const dealsData = await response.json();
 
       // Store fetched data in AsyncStorage
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dealsData));
